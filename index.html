@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circles</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+	<script type="text/javascript" src="assets/js/lib/paper-full.js">
+	</script>
+	<script type="text/javascript" src="assets/js/lib/howler.js"></script>
+
+<script type="text/paperscript" canvas="myCanvas">
+
+
+	var m1 = 'newsounds/melody/bubbles.mp3';
+	var m2 = 'newsounds/melody/marimba_cmaj7.wav';
+	var m3 = 'newsounds/melody/particles_cmaj7_and_gmaj7.wav';
+	var m4 = 'newsounds/melody/harp_bmin.wav';
+	var m5 = 'newsounds/melody/piano_cmaj7.wav';
+	var m6 = 'newsounds/melody/piano_fmaj7.wav';
+	var m7 = 'newsounds/melody/Smooth.wav';
+	var m8 = 'newsounds/melody/strhodes_Fmaj7.wav';
+	var m9 = 'newsounds/melody/strings_fmaj7.wav';
+	var m10 = 'newsounds/melody/waterdrop.wav';
+	var m11 = 'newsounds/melody/wobble.wav';
+	var m12 = 'newsounds/melody/clay.mp3';
+	var m13 = 'newsounds/melody/chimes.wav';
+	var m14 = 'newsounds/melody/bells_cmaj.wav';
+	var m15 = 'newsounds/melody/stars_cmaj.wav';
+	var m16 = 'newsounds/melody/stars_fmaj.wav';
+	var m17 = 'newsounds/melody/stars_gmaj.wav';
+
+	var k1 = 'newsounds/kit/Cymbal13.wav';
+	var k2 = 'newsounds/kit/Hihat1.wav';
+	var k3 = 'newsounds/kit/Hihat10.wav';
+	var k4 = 'newsounds/kit/Kick5.wav';
+	var k5 = 'newsounds/kit/Perc2.wav';
+	var k6 = 'newsounds/kit/TSClap5.wav';
+	var k7 = 'newsounds/kit/openhat.wav';
+
+	var r1 = 'newsounds/rhythm/Chant.wav';
+	var r2 = 'newsounds/rhythm/diesel.m4a';
+	var r3 = 'newsounds/rhythm/MusicBox.wav';
+	var r4 = 'newsounds/rhythm/OlSchool.wav';
+	var r5 = 'newsounds/rhythm/Onigiri.wav';
+	var r6 = 'newsounds/rhythm/Ride.wav';
+	var r7 = 'newsounds/rhythm/Zip.wav';
+
+
+	var circles = [];
+	var keyData = {
+		q: {
+			sound: new Howl({
+			  src: [m1]
+			}),
+			color: '#1abc9c'
+		},
+		w: {
+			sound: new Howl({
+			  src: [m12]
+			}),
+			color: '#2ecc71'
+		},
+		e: {
+			sound: new Howl({
+			  src: [m9]
+			}),
+			color: '#3498db'
+		},
+		r: {
+			sound: new Howl({
+			  src: [m4]
+			}),
+			color: '#9b59b6'
+		},
+		t: {
+			sound: new Howl({
+			  src: [k2]
+			}),
+			color: '#34495e'
+		},
+		y: {
+			sound: new Howl({
+			  src: [k5]
+			}),
+			color: '#16a085'
+		},
+		u: {
+			sound: new Howl({
+			  src: [m15]
+			}),
+			color: '#27ae60'
+		},
+		i: {
+			sound: new Howl({
+			  src: [r5]
+			}),
+			color: '#2980b9'
+		},
+		o: {
+			sound: new Howl({
+			src: [k7]
+			}),
+			color: '#8e44ad'
+		},
+		p: {
+			sound: new Howl({
+			  src: [m13]
+			}),
+			color: '#2c3e50'
+		},
+		a: {
+			sound: new Howl({
+			  src: [m2]
+			}),
+			color: '#f1c40f'
+		},
+		s: {
+			sound: new Howl({
+			  src: [m11]
+			}),
+			color: '#e67e22'
+		},
+		d: {
+			sound: new Howl({
+			  src: [m8]
+			}),
+			color: '#e74c3c'
+		},
+		f: {
+			sound: new Howl({
+			  src: [r2]
+			}),
+			color: '#95a5a6'
+		},
+		g: {
+			sound: new Howl({
+			  src: [m3]
+			}),
+			color: '#f39c12'
+		},
+		h: {
+			sound: new Howl({
+			  src: [m7]
+			}),
+			color: '#d35400'
+		},
+		j: {
+			sound: new Howl({
+			  src: [m10]
+			}),
+			color: '#1abc9c'
+		},
+		k: {
+			sound: new Howl({
+			  src: [m5]
+			}),
+			color: '#2ecc71'
+		},
+		l: {
+			sound: new Howl({
+			  src: [m14]
+			}),
+			color: '#3498db'
+		},
+		z: {
+			sound: new Howl({
+			  src: [k4]
+			}),
+			color: '#9b59b6'
+		},
+		x: {
+			sound: new Howl({
+			  src: [r4]
+			}),
+			color: '#34495e'
+		},
+		c: {
+			sound: new Howl({
+			  src: [m17]
+			}),
+			color: '#16a085'
+		},
+		v: {
+			sound: new Howl({
+			  src: [r3]
+			}),
+			color: '#27ae60'
+		},
+		b: {
+			sound: new Howl({
+			  src: [m16]
+			}),
+			color: '#2980b9'
+		},
+		n: {
+			sound: new Howl({
+			src: [k3]
+			}),
+			color: '#8e44ad'
+		},
+		m: {
+			sound: new Howl({
+			  src: ['sounds/moon.mp3']
+			}),
+			color: '#2c3e50'
+		}
+	}
+	// var sound = new Howl({
+	// 	src: ['sounds/bubbles.mp3']
+	// })
+	function onKeyDown(event){
+		//sound.play();
+		//console.log("Working!");
+		if(keyData[event.key]){
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPoint = Point.random();
+			var point = maxPoint * randomPoint;
+			keyData[event.key].sound.play();
+			if(keyData[event.key].type == 'image'){
+				var raster = new Raster(keyData[event.key].name);
+				raster.position = new Point(point);
+				circles.push(raster);
+			}
+			else{
+				var newCircle = new Path.Circle(new Point(point), 500);
+				newCircle.fillColor = keyData[event.key].color;
+				circles.push(newCircle);
+			}
+		}
+	}
+
+	function onFrame(event){
+		for(var i = 0; i < circles.length; i++){
+			circles[i].scale(0.9);
+			//circles[i].rotate(5);
+			//circles[i].fillColor.hue += 1;
+	    	console.log(circles[i].id)
+	    	if(circles[i].area < 1){
+	      		circles[i].remove();
+	     		circles.splice(i, 1);
+	      		i--;
+	      		console.log(circles);
+	    	}
+
+	  	}
+	}
+</script>
+
+</head>
+<body>
+
+	<canvas id="myCanvas" resize></canvas>
+	<img id="patrick" class="visuallyhidden" src="image/patrick.png">
+	<img id="shiba" class="visuallyhidden" src="image/shiba.jpg">
+
+
+</body>
+</html>
